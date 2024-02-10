@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 load_dotenv(verbose=True)
 openai.api_key = os.environ.get("OPENAI_API_KEY")
 
-def get_popular_article(top_n: int = 15) -> list[dict[str, str]]:
+def get_popular_article(top_n: int = 3) -> list[dict[str, str]]:
     response_articles = requests.get(os.environ.get("API_ENDPOINT")).json()["articles"]
     selected_articles = random.sample(response_articles, k=len(response_articles)) 
     recent_articles = selected_articles[:top_n]
@@ -61,7 +61,7 @@ def summary_tweet(rails_article: list[dict[str, str]]) -> str:
 
     【回答フォーマット】
     🛑Ruby on Railsの記事を紹介🛑
-    🗣[記事のタイトル名]
+    🗣「[記事のタイトル名]」
 
     https://zenn.dev/neet/articles/{rails_article["slug"]}
     """
