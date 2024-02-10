@@ -3,7 +3,7 @@ import os
 import tweepy
 from dotenv import load_dotenv
 
-from tweet_module import choose_ai_article, get_popular_article, summary_tweet
+from tweet_module import choose_rails_article, get_popular_article, summary_tweet
 
 load_dotenv(verbose=True)
 TWITTER_API_KEY = os.environ.get("TWITTER_API_KEY")
@@ -25,7 +25,7 @@ def post_tweet(tweet: str) -> None:
 
 def lambda_handler():
     popular_artilces = get_popular_article()
-    ai_article = choose_ai_article(popular_artilces)
+    ai_article = choose_rails_article(popular_artilces)
     tweet = summary_tweet(ai_article)
     print(f"{tweet=}")
 
